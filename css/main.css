@@ -8,7 +8,7 @@ html{
     scroll-behavior: smooth;
 }
 body{
-    background-image: linear-gradient(to bottom,#cf2b4f,teal 130%);
+    background-image: repeating-linear-gradient(to bottom,#cf2b4f,teal 130%);
     background-size: auto 100vh;
     font-size: 12px;
     height: 100vh;
@@ -99,17 +99,57 @@ a:active{
     font-style: italic;
     line-height: 1.8;
 }
+.about,
 .contato,
 .portfolio{
     padding: 2em;
     min-height: 100vh;
 }
+
+.container{
+    margin:0 auto;
+}
+
+@media(min-width:1200px){
+    .container,
+    .about,
+    .contato,
+    .portfolio{
+        max-width: 1200px; 
+        margin:0 auto;
+    }
+}
+
+
+
+
+.about h2,
 .contato h2,
 .portfolio h2{
     color:whitesmoke;
     margin-bottom: 1.5em;
     font-size: 2em;
 }
+
+.about .avatar{
+    float:left;
+    margin-right: 1.3em;
+    margin-bottom: 1.2em;
+    
+}
+.avatar img{
+    /* border-radius: 55%; */
+    clip-path: polygon(30% 0%, 70% 0%, 100% 30%, 100% 70%, 70% 100%, 30% 100%, 0% 70%, 0% 30%);
+
+}
+
+.about p{
+    color:whitesmoke;
+    text-indent: 1.4em;
+    margin-bottom:1.4em;
+    text-align: justify;
+}
+
 
 .portfolio .grid{
     display:grid;
@@ -121,9 +161,9 @@ a:active{
     .portfolio .grid{
         grid-template-columns: 250px 250px;
     }
-    .img-portfolio:hover{
+    /* .img-portfolio:hover{
         transform:scale(1.4) rotate(8deg);
-    }
+    } */
 }
 
 @media (min-width: 800px){
@@ -145,6 +185,38 @@ a:active{
     transition: transform 500ms;
 }
 
+.flip-card{
+    perspective: 300px;
+}
+
+.card{
+    position: relative;
+    transform-style: preserve-3d;
+    transition:transform 1s;
+    
+}
+
+.card:hover{
+    transform: scale(1.2) rotateY(180deg);
+    
+}
+.card-back{
+    background-color:pink;
+    height: 240px;
+    width: 240px;
+    border-radius: 50%;
+    padding-top:40%;
+    padding-left: 3%;
+    transform: rotateY(180deg);
+    
+}
+
+.card-front,
+.card-back{
+    position: absolute;
+    backface-visibility: hidden;
+}
+
 .contato .icons{
     text-align: center;
     
@@ -154,10 +226,12 @@ a:active{
     font-size: 4em;
     
 }
-.contato a:hover{
+ .contato a:hover{
     text-decoration: none;
     text-shadow: 0 0 10px rgba(255,255,255,.5);   
-}
+} 
+
+
 .up{
     position:fixed;
     bottom: 15px;
